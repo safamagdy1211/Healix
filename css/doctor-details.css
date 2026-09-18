@@ -1,0 +1,890 @@
+:root {
+  --dd-bg: #DFE5EB;
+  --dd-card: #163c62;          
+  --dd-card-alt: rgba(255, 255, 255, 0.06);
+  --dd-card-alt-hover: rgba(255, 255, 255, 0.1);
+  --dd-border: rgba(255, 255, 255, 0.14);
+  --dd-heading: #ffffff;
+  --dd-text: #dbe6f1;
+  --dd-muted: #93aac2;
+  --dd-accent: #2dd4bf;
+  --dd-gradient: linear-gradient(135deg, #14b8a6, #2dd4bf);
+  --dd-card-shadow: 0 16px 36px rgba(9, 24, 42, 0.28);
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body.doctor-details-page {
+  background: var(--dd-bg);
+}
+
+body.doctor-details-page .navbar {
+  background: #163c62;
+  box-shadow: 0 6px 20px rgba(9, 24, 42, 0.18);
+}
+
+.dd-page {
+  padding: 120px 0 70px;
+}
+
+.dd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 18px;
+  background: var(--dd-card);
+  padding: 9px 16px;
+  border-radius: 999px;
+  box-shadow: var(--dd-card-shadow);
+}
+
+.dd-back:hover {
+  color: var(--dd-accent);
+}
+
+/* ===================== FLASH MESSAGES ===================== */
+
+.dd-alert,
+.dd-alert-success {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dd-alert {
+  background: #fdecec;
+  color: #b42318;
+  border: 1px solid #f5b5ae;
+}
+
+.dd-alert a {
+  color: #b42318;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.dd-alert-success {
+  background: #e7f8f1;
+  color: #0d7a4d;
+  border: 1px solid #a8e6c7;
+}
+
+.field-error {
+  display: block;
+  color: #ff8a80;
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.dd-empty {
+  color: var(--dd-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.dd-empty a {
+  color: var(--dd-accent);
+  font-weight: 700;
+}
+
+/* ===================== TOP GRID: PROFILE + ACTIONS ===================== */
+
+.dd-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 22px;
+  align-items: stretch;
+  margin-bottom: 22px;
+}
+
+/* ===================== PROFILE CARD ===================== */
+
+.dd-profile-card {
+  background: var(--dd-card);
+  border-radius: 22px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 30px;
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+}
+
+.dd-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dd-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  border: 5px solid rgba(255, 255, 255, 0.14);
+}
+
+.dd-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dd-specialty-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.dd-name {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--dd-heading);
+  margin: 0 0 2px;
+}
+
+.dd-title {
+  color: var(--dd-muted);
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+
+.dd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 16px;
+  color: var(--dd-text);
+  font-size: 0.92rem;
+}
+
+.dd-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #f5b243;
+}
+
+.dd-stars strong {
+  color: var(--dd-heading);
+  margin-left: 4px;
+}
+
+.dd-review-count {
+  color: var(--dd-muted);
+  font-weight: 400;
+}
+
+.dd-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dd-meta-item i {
+  color: var(--dd-accent);
+}
+
+.dd-bio {
+  color: var(--dd-text);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ===================== ACTION CARD (RIGHT OF PROFILE) ===================== */
+
+.dd-action-card {
+  background: var(--dd-card);
+  border-radius: 22px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--dd-gradient);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  box-shadow: 0 10px 22px rgba(20, 184, 166, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-book svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-book:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(20, 184, 166, 0.45);
+}
+
+.btn-outline-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--dd-accent);
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 12px;
+  border: 1.5px solid var(--dd-accent);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dd-action-card .btn-outline-teal:hover {
+  background: rgba(45, 212, 191, 0.12);
+}
+
+.dd-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.dd-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--dd-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  cursor: default;
+  user-select: none;
+}
+
+.dd-quick-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--dd-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* ===================== TABS ===================== */
+
+.dd-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--dd-card);
+  border-radius: 16px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 8px;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+
+.dd-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: var(--dd-muted);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dd-tab .dd-tab-count {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--dd-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 999px;
+}
+
+.dd-tab.is-active {
+  color: #fff;
+  background: rgba(45, 212, 191, 0.18);
+}
+
+.dd-tab.is-active .dd-tab-count {
+  background: var(--teal-500);
+  color: #fff;
+}
+
+.dd-tab:not(.is-active):hover {
+  color: #fff;
+}
+
+/* ===================== MAIN LAYOUT ===================== */
+
+.dd-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  align-items: start;
+}
+
+.dd-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.dd-panel {
+  background: var(--dd-card);
+  border-radius: 18px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 26px 28px;
+  scroll-margin-top: 110px;
+}
+
+.dd-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dd-heading);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dd-panel-title span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dd-panel-title i {
+  color: var(--dd-accent);
+}
+
+.dd-panel-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--dd-accent);
+  text-decoration: none;
+}
+
+.dd-tab-panel {
+  display: none;
+}
+
+.dd-tab-panel.is-active {
+  display: block;
+}
+
+/* ===================== WEEKLY SCHEDULE (professional grid) ===================== */
+
+.dd-schedule-pro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.dd-schedule-pro-card {
+  position: relative;
+  background: var(--dd-card-alt);
+  border: 1px solid var(--dd-border);
+  border-left: 4px solid var(--dd-accent);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dd-schedule-pro-card:hover {
+  background: var(--dd-card-alt-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dd-schedule-pro-card.is-today {
+  background: rgba(45, 212, 191, 0.1);
+}
+
+.dd-schedule-pro-badge {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: var(--dd-gradient);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.dd-schedule-pro-day {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dd-schedule-pro-dayicon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--dd-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.dd-schedule-pro-dayname {
+  font-weight: 700;
+  color: var(--dd-heading);
+  font-size: 0.98rem;
+}
+
+.dd-schedule-pro-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dd-accent);
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding-left: 44px;
+}
+
+/* ===================== REVIEWS ===================== */
+
+.dd-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.dd-review {
+  padding: 16px 18px;
+  background: var(--dd-card-alt);
+  border: 1px solid var(--dd-border);
+  border-radius: 14px;
+}
+
+.dd-review-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dd-review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dd-gradient);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dd-review-headtext {
+  min-width: 0;
+}
+
+.dd-review-author {
+  display: block;
+  font-weight: 700;
+  color: var(--dd-heading);
+  font-size: 0.92rem;
+}
+
+.dd-review-date {
+  color: var(--dd-muted);
+  font-size: 0.76rem;
+}
+
+.dd-review-stars {
+  color: #f5b243;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+.dd-review-comment {
+  color: var(--dd-text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===================== "YOUR HEALTH IS OUR PRIORITY" CARD ===================== */
+
+.dd-priority-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--dd-card);
+  border-radius: 22px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dd-priority-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.28), transparent 70%);
+  pointer-events: none;
+}
+
+.dd-priority-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: var(--dd-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 22px rgba(20, 184, 166, 0.35);
+}
+
+.dd-priority-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--dd-heading);
+  margin: 0;
+}
+
+.dd-priority-card > p {
+  color: var(--dd-text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.dd-priority-list {
+  list-style: none;
+  margin: 4px 0 6px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.dd-priority-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dd-text);
+  font-size: 0.88rem;
+}
+
+.dd-priority-list i {
+  color: var(--dd-accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dd-priority-cta {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* ===================== STATS STRIP ===================== */
+
+.dd-stats-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  background: var(--dd-card);
+  border-radius: 18px;
+  box-shadow: var(--dd-card-shadow);
+  padding: 24px 30px;
+}
+
+.dd-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dd-stat i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--dd-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-stat strong {
+  display: block;
+  color: var(--dd-heading);
+  font-size: 1.15rem;
+}
+
+.dd-stat span {
+  color: var(--dd-muted);
+  font-size: 0.78rem;
+}
+
+/* ===================== MODALS ===================== */
+
+.dd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 16, 28, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.dd-modal-overlay.is-open {
+  display: flex;
+}
+
+.dd-modal {
+  background: var(--dd-card);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(6, 16, 28, 0.5);
+  animation: dd-modal-in 0.18s ease;
+}
+
+@keyframes dd-modal-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dd-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--dd-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dd-modal-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dd-modal-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--dd-heading);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dd-modal-title i {
+  color: var(--dd-accent);
+}
+
+.dd-modal-subtitle {
+  color: var(--dd-muted);
+  font-size: 0.88rem;
+  margin: 0 0 20px;
+}
+
+/* ===================== FORMS ===================== */
+
+.dd-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dd-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dd-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.dd-form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dd-text);
+  margin-bottom: 6px;
+}
+
+.dd-optional {
+  font-weight: 400;
+  color: var(--dd-muted);
+}
+
+.dd-form-group input[type="date"],
+.dd-form-group input[type="time"],
+.dd-form-group textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--dd-heading);
+  resize: vertical;
+  color-scheme: dark;
+}
+
+.dd-form-group textarea::placeholder {
+  color: var(--dd-muted);
+}
+
+.dd-form-group input:focus,
+.dd-form-group textarea:focus {
+  outline: none;
+  border-color: var(--dd-accent);
+}
+
+.dd-submit {
+  align-self: stretch;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ===================== STAR RATING INPUT ===================== */
+
+.dd-star-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 1.8rem;
+}
+
+.dd-star-input input {
+  display: none;
+}
+
+.dd-star-input label {
+  color: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.dd-star-input input:checked ~ label,
+.dd-star-input label:hover,
+.dd-star-input label:hover ~ label {
+  color: #f5b243;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 980px) {
+  .dd-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dd-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .dd-page {
+    padding: 105px 0 50px;
+  }
+
+  .dd-profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dd-meta {
+    justify-content: center;
+  }
+
+  .dd-schedule-pro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dd-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dd-tabs {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .dd-stats-strip {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .dd-back {
+    margin-top: 40px;
+  }
+}
